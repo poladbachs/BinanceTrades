@@ -14,3 +14,8 @@ def btc_trade_history(msg):
         btc_price['error'] = False
     else:
         btc_price['error'] = True
+
+# init and start WebSocket
+bsm = ThreadedWebsocketManager()
+bsm.start()
+
