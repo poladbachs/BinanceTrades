@@ -35,6 +35,6 @@ bsm.start_symbol_ticker_socket(callback=btc_trade_history, symbol='BTCUSDT')
 bsm.start_symbol_ticker_socket(callback=eth_trade_history, symbol='ETHUSDT')
 
 while True:
-    sleep(10)
+    sleep(2)
 
 bsm.stop()
