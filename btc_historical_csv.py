@@ -28,3 +28,12 @@ with open('btc_bars.csv', 'w', newline='') as f:
     wr = csv.writer(f)
     for line in bars:
         wr.writerow(line)
+
+# option 3 - save as CSV file without library, only showing date, open, high, low, close
+with ('btc_bars2.csv', 'w') as d:
+    for line in bars:
+        d.write(f'{line[0]}, {line[1]}, {line[2]}, {line[3]}, {line[4]}\n')
+
+# delete redundant data - keep date, open, high, low, close
+for line in bars:
+    del line[5:]
