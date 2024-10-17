@@ -9,4 +9,7 @@ print(btc_df.tail(5))
 
 mean = btc_df.close.tail(20).mean()
 
+max_btc_value = btc_df.loc['2024']['close'].max()
+print(max_btc_value)
+
 print(mean)
