@@ -29,7 +29,7 @@ btc_df['date'] = pd.to_datetime(btc_df['date'], unit='ms')
 btc_df.set_index('date', inplace=True)
 print(btc_df.head())
 
-btc_df.head().to_csv('btc_bars3.csv')
+btc_df.to_csv('btc_bars3.csv')
 
 
 # Other options to store historical data
