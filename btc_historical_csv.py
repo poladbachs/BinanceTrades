@@ -22,3 +22,9 @@ bars = client.get_historical_klines('BTCUSDT', '1m', timestamp, limit=1)
 # option 1 - save to file using json - list of lists
 with open('btc_bars.json', 'w') as e:
     json.dump(bars, e)
+
+# option 2 - save as CSV file using the csv writer library
+with open('btc_bars.csv', 'w', newline='') as f:
+    wr = csv.writer(f)
+    for line in bars:
+        wr.writerow(line)
