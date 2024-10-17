@@ -12,8 +12,13 @@ test_api_secret = os.environ.get('binance_test_secret')
 client = Client(test_api_key, test_api_secret)
 
 # valid intervals - 1m, 3m, 1h, 12h, 1d, 1M
-timestamp = client._get_earliest_valid_timestamp('BTCUSDT', '1d')
+timestamp = client._get_earliest_valid_timestamp('BTCUSDT', '1m')
 date = datetime.utcfromtimestamp(timestamp/1000)
 print(date)
 
-bars = client.get_historical_klines
+bars = client.get_historical_klines('BTCUSDT', '1m', timestamp, limit=1)
+# print(bars)
+
+# option 1 - save to file using json - list of lists
+with open('btc_bars.json', 'w') as e:
+    json.dump(bars, e)
