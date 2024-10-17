@@ -19,6 +19,21 @@ print(date)
 bars = client.get_historical_klines('BTCUSDT', '1d', timestamp, limit=1000)
 # print(bars)
 
+# delete redundant data - keep date, open, high, low, close
+for line in bars:
+    del line[5:]
+
+# bars into Pandas DF and export to csv
+btc_df = pd.DataFrame(bars, columns=['date', 'open', 'high', 'low', 'close'])
+btc_df['date'] = pd.to_datetime(btc_df['date'], unit='ms')
+btc_df.set_index('date', inplace=True)
+print(btc_df.head())
+
+btc_df.head().to_csv('btc_bars3.csv')
+
+
+# Other options to store historical data
+
 # option 1 - save to file using json - list of lists
 # with open('btc_bars.json', 'w') as e:
 #     json.dump(bars, e)
@@ -30,18 +45,6 @@ bars = client.get_historical_klines('BTCUSDT', '1d', timestamp, limit=1000)
 #         wr.writerow(line)
 
 # option 3 - save as CSV file without library, only showing date, open, high, low, close
-with open('btc_bars2.csv', 'w') as d:
-    for line in bars:
-        d.write(f'{line[0]}, {line[1]}, {line[2]}, {line[3]}, {line[4]}\n')
-
-# delete redundant data - keep date, open, high, low, close
-for line in bars:
-    del line[5:]
-
-# option 4 - Pandas DF and export to csv
-btc_df = pd.DataFrame(bars, columns=['date', 'open', 'high', 'low', 'close'])
-btc_df['date'] = pd.to_datetime(btc_df['date'], unit='ms')
-btc_df.set_index('date', inplace=True)
-print(btc_df.head())
-
-btc_df.head().to_csv('btc_bars3.csv')
+# with open('btc_bars2.csv', 'w') as d:
+#     for line in bars:
+#         d.write(f'{line[0]}, {line[1]}, {line[2]}, {line[3]}, {line[4]}\n')
