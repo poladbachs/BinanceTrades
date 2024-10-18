@@ -18,19 +18,20 @@ eth_price = float(ticker['price'])
 
 print(f"Current ETH price: {eth_price}")
 
-buy_order = client.order_market_buy(symbol=symbol, quantity=quantity)
+# BUY MARKET ORDER
+# buy_order = client.order_market_buy(symbol=symbol, quantity=quantity)
+# print(f"Buy market order done: {buy_order}")
 
-print(f"Buy market order done: {buy_order}")
+# SELL MARKET ORDER
+# sell_order = client.order_market_sell(symbol=symbol, quantity=quantity)
+# print(f"Sell market order done: {sell_order}")
 
-sell_order = client.order_market_sell(symbol=symbol, quantity=quantity)
+# BUY LIMIT ORDER
+# buy_limit = client.order_limit_buy(symbol=symbol, quantity=quantity, price=2500)
+# print(f"Buy limit order done: {buy_limit}")
 
-print(f"Sell market order done: {sell_order}")
-
-buy_limit = client.order_limit_buy(symbol=symbol, quantity=quantity, price=2646.20)
-
-print(f"Buy limit order done: {buy_limit}")
-
-cancel = client.cancel_order(symbol='ETHUSDT', orderId=buy_limit['orderId'])
+# CANCEL ORDER
+# cancel = client.cancel_order(symbol='ETHUSDT', orderId='8997607')
 
 print(client.get_asset_balance(asset='ETH'))
 
