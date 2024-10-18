@@ -18,7 +18,13 @@ eth_price = float(ticker['price'])
 
 print(f"Current ETH price: {eth_price}")
 
-buy_order = client.order_market_buy(symbol=symbol, quantity=quantity)
+# buy_order = client.order_market_buy(symbol=symbol, quantity=quantity)
+
+# print(f"Buy market order done: {buy_order}")
+
+sell_order = client.order_market_sell(symbol=symbol, quantity=quantity)
+
+print(f"Sell market order done: {sell_order}")
 
 print(client.get_asset_balance(asset='ETH'))
 
