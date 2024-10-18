@@ -27,7 +27,7 @@ for line in bars:
 btc_df = pd.DataFrame(bars, columns=['date', 'open', 'high', 'low', 'close'])
 btc_df['date'] = pd.to_datetime(btc_df['date'], unit='ms')
 btc_df.set_index('date', inplace=True)
-print(btc_df.head())
+print(btc_df.tail())
 
 btc_df.to_csv('btc_bars3.csv')
 
