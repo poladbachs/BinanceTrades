@@ -38,7 +38,7 @@ In the Binance Trades project, I implemented the following scripts:
 - Created OCO (One Cancels the Other) orders for ETH, setting stop-loss and take-profit prices.
 
 ### `Buy_BNB.py`
-- Automated the process of topping up BNB when its balance falls below a specified threshold.
+- Automated the process of topping up BNB to pay for trading fees when its balance falls below a specified threshold.
 
 ### `Pairs_Trade_Price.py`
 - Executed a market buy order for ETH if the BTC price crosses a defined threshold using WebSocket.
