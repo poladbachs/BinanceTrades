@@ -45,3 +45,9 @@ while True:
                 break
             except Exception as e:
                 print(e)
+        elif df.price.iloc[-1] > min_price * 1.05:
+            try:
+                order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.2")
+                break
+            except Exception as e:
+                print(e)
