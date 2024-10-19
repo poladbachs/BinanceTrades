@@ -41,14 +41,14 @@ while True:
         max_price = df.price.max()
         min_price = df.price.min()
 
-        if df.price.iloc[-1] < max_price * 0.95:
+        if df.price.iloc[-1] < max_price * 0.999:
             try:
                 order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.3")
                 print(f"SELL ETH IF BTC FALLS BY >5%: {order}")
                 sleep(300) # Sleep to prevent placing multiple orders too quickly
             except Exception as e:
                 print(e)
-        elif df.price.iloc[-1] > min_price * 1.05:
+        elif df.price.iloc[-1] > min_price * 1.001:
             try:
                 order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.3")
                 print(f"BUY ETH IF BTC RISES BY >5%: {order}")
