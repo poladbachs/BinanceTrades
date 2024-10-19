@@ -24,3 +24,6 @@ bsm.start()
 bsm.start_symbol_ticker_socket(
     symbol='BTCUSDT',
     callback=btc_pairs_trade)
+
+while not price['BTCUSDT']:
+    sleep(0.1)
