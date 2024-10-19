@@ -31,3 +31,13 @@ except BinanceAPIException as e:
 	print(e)
 except BinanceOrderException as e:
 	print(e)
+
+print(f"Stop loss order done: {order}")
+
+open_orders = client.get_open_orders(symbol=symbol)
+print(f"Open orders: open_orders")
+cancel_order = client.cancel_order(symbol='ETHUSDT', orderId='9013061')
+
+print(client.get_asset_balance(asset='ETH'))
+
+print(client.get_asset_balance(asset='USDT'))
