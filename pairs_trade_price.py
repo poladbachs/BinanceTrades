@@ -12,3 +12,8 @@ client = Client(api_key, api_secret, testnet=True)
 
 price = {'BTCUSDT': None, 'error':False}
 
+def btc_pairs_trade(msg):
+    if msg['e'] != 'error':
+        price['BTCUSDT'] = float(msg['c'])
+    else:
+        price['error'] = True
