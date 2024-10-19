@@ -17,3 +17,10 @@ def btc_pairs_trade(msg):
         price['BTCUSDT'] = float(msg['c'])
     else:
         price['error'] = True
+
+
+bsm = ThreadedWebsocketManager()
+bsm.start()
+bsm.start_symbol_ticker_socket(
+    symbol='BTCUSDT',
+    callback=btc_pairs_trade)
