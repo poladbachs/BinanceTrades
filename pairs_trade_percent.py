@@ -35,7 +35,13 @@ while True:
     else:
         df = price['BTCUSDT']
         start_time = df.date.iloc[-1] - pd.Timedelta(minutes=5)
-        df = df.loc[df.date > start_time] # fitler to data obtained last 5 min
+        df = df.loc[df.date > start_time] # fitler DF to contain data of last 5 min
         max_price = df.price.max()
         min_price = df.price.min()
-        
+
+        if df.price.iloc[-1] < max_price * 0.95:
+            try:
+                order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.2")
+                break
+            except Exception as e:
+                print(e)
