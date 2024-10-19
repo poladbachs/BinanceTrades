@@ -14,3 +14,9 @@ price = {'BTCUSDT': pd.DataFrame(columns=['date', 'price']), 'error':False}
 def btc_pairs_trade(msg):
     if msg['e'] != 'error':
         price['BTCUSDT'].loc[len(price['BTCUSDT'])] = [pd.Timestamp.now(), float(msg['c'])]
+
+bsm = ThreadedWebsocketManager()
+bsm.start()
+bsm.start_symbol_ticker_socket(
+    symbol='BTCUSDT', 
+    callback=btc_pairs_trade)
