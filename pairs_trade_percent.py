@@ -26,7 +26,7 @@ while len(price['BTCUSDT']) == 0:
 
 sleep(300)
 
-print(client.get_asset_balance(asset='USDT'))
+print(client.futures_account_balance())
 
 while True:
     if price['error']:
@@ -37,7 +37,7 @@ while True:
     else:
         df = price['BTCUSDT']
         start_time = df.date.iloc[-1] - pd.Timedelta(minutes=5)
-        df = df.loc[df.date > start_time] # fitler DF to contain data of last 5 min
+        df = df.loc[df.date >= start_time] # fitler DF to contain data of last 5 min
         max_price = df.price.max()
         min_price = df.price.min()
 
@@ -45,21 +45,24 @@ while True:
             try:
                 order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.3")
                 print(f"SELL ETH IF BTC FALLS BY >5%: {order}")
-                break
+                sleep(300) # Sleep to prevent placing multiple orders too quickly
             except Exception as e:
                 print(e)
         elif df.price.iloc[-1] > min_price * 1.05:
             try:
                 order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.3")
                 print(f"BUY ETH IF BTC RISES BY >5%: {order}")
-                break
+                sleep(300) # Sleep for 5 minutes after placing an order
             except Exception as e:
                 print(e)
 
         sleep(0.1)
 
+
+print(f"BTC Max Price in 5 min: {max_price}")
+print(f"BTC Min Price in 5 min: {min_price}")
+
 eth_price = client.get_symbol_ticker(symbol='ETHUSDT')
-print(client.get_asset_balance(asset='ETH'))
-print(client.get_asset_balance(asset='USDT'))
+print(client.futures_account_balance())
 
 bsm.stop()
