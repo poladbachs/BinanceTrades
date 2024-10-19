@@ -17,14 +17,18 @@ eth_price = float(ticker['price'])
 
 print(f"Current ETH price: {eth_price}")
 
+take_profit_price = 2700  # take profit target
+stop_price = 2640         # Trigger for stop-loss
+stop_limit_price = 2640   # Price at which stop-limit order is placed
+
 try:
 	order = client.create_oco_order(
 		symbol=symbol,
 		side='SELL',
 		quantity=quantity,
-		price=2650,
-		stopPrice=2640,
-		stopLimitPrice=2640,
+        price=take_profit_price,
+        stopPrice=stop_price,
+        stopLimitPrice=stop_limit_price,
 		stopLimitTimeInForce='GTC')
 
 except BinanceAPIException as e:
