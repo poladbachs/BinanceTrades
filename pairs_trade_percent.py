@@ -32,3 +32,10 @@ while True:
         sleep(2)
         bsm.start()
         price['error'] = False
+    else:
+        df = price['BTCUSDT']
+        start_time = df.date.iloc[-1] - pd.Timedelta(minutes=5)
+        df = df.loc[df.date > start_time] # fitler to data obtained last 5 min
+        max_price = df.price.max()
+        min_price = df.price.min()
+        
