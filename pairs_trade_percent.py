@@ -26,6 +26,8 @@ while len(price['BTCUSDT']) == 0:
 
 sleep(300)
 
+print(client.get_asset_balance(asset='USDT'))
+
 while True:
     if price['error']:
         bsm.stop()
@@ -41,13 +43,17 @@ while True:
 
         if df.price.iloc[-1] < max_price * 0.95:
             try:
-                order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.2")
+                order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.3")
+                print(f"SELL ETH IF BTC FALLS BY >5%: {order}")
                 break
             except Exception as e:
                 print(e)
         elif df.price.iloc[-1] > min_price * 1.05:
             try:
-                order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.2")
+                order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.3")
+                print(f"BUY ETH IF BTC RISES BY >5%: {order}")
                 break
             except Exception as e:
                 print(e)
+
+        sleep(0.1)

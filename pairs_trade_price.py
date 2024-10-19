@@ -48,7 +48,7 @@ while True:
 
     sleep(0.1)
 
-bnb_price = client.get_symbol_ticker(symbol='ETHUSDT')
+eth_price = client.get_symbol_ticker(symbol='ETHUSDT')
 print(client.get_asset_balance(asset='ETH'))
 print(client.get_asset_balance(asset='USDT'))
 
