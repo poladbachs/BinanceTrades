@@ -29,7 +29,7 @@ try:
         price=take_profit_price,
         stopPrice=stop_price,
         stopLimitPrice=stop_limit_price,
-		stopLimitTimeInForce='GTC')
+		stopLimitTimeInForce='GTC') # Ensure order remains active till full execution or cancellation
 
 except BinanceAPIException as e:
 	print(e)
