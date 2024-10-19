@@ -6,7 +6,7 @@ The Binance Trades project is designed to test and execute various trading actio
 
 ## Technologies Used
 - **Python Binance** for scripting
-- **Binance API** for interacting with Spot and Futures testnet
+- **Binance API** for interacting with Spot and Futures testnets
 - **Pandas** for data manipulation
 - **Websockets** for real-time price updates
 - **OS module** for Binance API Key and Secret variable management
