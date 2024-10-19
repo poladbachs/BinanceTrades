@@ -27,3 +27,10 @@ bsm.start_symbol_ticker_socket(
 
 while not price['BTCUSDT']:
     sleep(0.1)
+
+while True:
+    if price['error']:
+        bsm.stop()
+        sleep(2)
+        bsm.start()
+        price['error'] = False
