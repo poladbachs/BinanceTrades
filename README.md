@@ -1,3 +1,5 @@
+![binance_monkey](https://github.com/user-attachments/assets/b992cb8c-bfe5-4191-a47f-6b3c0ecca0b4)
+![ezgif-6-647ec88029](https://github.com/user-attachments/assets/f34cae91-215e-4d1a-b9c2-4c2b65f79316)
 # BinanceTrades
 Crypto Trading with Binance API
 
