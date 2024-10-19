@@ -26,3 +26,9 @@ while len(price['BTCUSDT']) == 0:
 
 sleep(300)
 
+while True:
+    if price['error']:
+        bsm.stop()
+        sleep(2)
+        bsm.start()
+        price['error'] = False
