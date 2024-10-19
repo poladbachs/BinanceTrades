@@ -50,7 +50,7 @@ while True:
                 print(e)
         elif df.price.iloc[-1] > min_price * 1.001:
             try:
-                order = client.futures_create_order(symbol='ETHUDST', side="SELL", type="MARKET", quantity="0.3")
+                order = client.futures_create_order(symbol='ETHUSDT', side="SELL", type="MARKET", quantity="0.3")
                 print(f"BUY ETH IF BTC RISES BY >5%: {order}")
                 sleep(300) # Sleep for 5 minutes after placing an order
             except Exception as e:

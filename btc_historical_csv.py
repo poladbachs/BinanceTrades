@@ -30,21 +30,3 @@ btc_df.set_index('date', inplace=True)
 print(btc_df.tail())
 
 btc_df.to_csv('btc_bars3.csv')
-
-
-# Other options to store historical data
-
-# option 1 - save to file using json - list of lists
-# with open('btc_bars.json', 'w') as e:
-#     json.dump(bars, e)
-
-# option 2 - save as CSV file using the csv writer library
-# with open('btc_bars.csv', 'w', newline='') as f:
-#     wr = csv.writer(f)
-#     for line in bars:
-#         wr.writerow(line)
-
-# option 3 - save as CSV file without library, only showing date, open, high, low, close
-# with open('btc_bars2.csv', 'w') as d:
-#     for line in bars:
-#         d.write(f'{line[0]}, {line[1]}, {line[2]}, {line[3]}, {line[4]}\n')
