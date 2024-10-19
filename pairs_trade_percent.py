@@ -57,3 +57,9 @@ while True:
                 print(e)
 
         sleep(0.1)
+
+eth_price = client.get_symbol_ticker(symbol='ETHUSDT')
+print(client.get_asset_balance(asset='ETH'))
+print(client.get_asset_balance(asset='USDT'))
+
+bsm.stop()
